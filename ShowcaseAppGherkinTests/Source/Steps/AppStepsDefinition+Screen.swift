@@ -19,9 +19,9 @@ extension AppStepsDefinition {
         }
 
         case welcome = "Welcome"
-        case welcomePage1 = "WelcomePage1"
-        case welcomePage2 = "WelcomePage2"
-        case welcomePage3 = "WelcomePage3"
+        case welcomeSkills = "WelcomeSkills"
+        case welcomeBio = "WelcomeBio"
+        case welcomeAvatar = "WelcomeAvatar"
     }
 
     func defineScreenSteps() {
@@ -58,12 +58,12 @@ extension Navigation.Screen {
         switch stepScreen {
         case .welcome:
             return Self.welcome()
-        case .welcomePage1:
-            return Self.welcome([.first, .second, .third])
-        case .welcomePage2:
-            return Self.welcome([.second, .third, .first])
-        case .welcomePage3:
+        case .welcomeSkills:
             return Self.welcome([.third, .first, .second])
+        case .welcomeBio:
+            return Self.welcome([.second, .third, .first])
+        case .welcomeAvatar:
+            return Self.welcome([.first, .second, .third])
         }
     }
 }

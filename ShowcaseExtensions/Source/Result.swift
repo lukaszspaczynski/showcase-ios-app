@@ -5,6 +5,19 @@
 //  Created by Lukasz Spaczynski on 24/11/2021.
 //
 
+import RxSwift
+
+public extension Result {
+    func asObservable() -> Observable<Success> {
+        switch self {
+        case let .success(value):
+            return .just(value)
+        case let .failure(error):
+            return .error(error)
+        }
+    }
+}
+
 public extension Result {
     var value: Success? {
         switch self {

@@ -19,11 +19,11 @@ enum WelcomePagesControllerFactory {
         func identifier() -> String {
             switch self {
             case .first:
-                return "WelcomePage1ViewController"
+                return "WelcomeAvatarViewController"
             case .second:
-                return "WelcomePage2ViewController"
+                return "WelcomeBioViewController"
             case .third:
-                return "WelcomePage3ViewController"
+                return "WelcomeSkillsViewController"
             }
         }
     }

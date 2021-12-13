@@ -50,4 +50,12 @@ class ShowcaseAppGherkinTests: GherkinTestCase {
             testCase: self
         )
     }
+
+    func testReloadingAvatar() throws {
+        NativeRunner.runScenario(
+            featureFile: "WelcomePage.feature",
+            scenario: "Reloading Avatar",
+            testCase: self
+        )
+    }
 }

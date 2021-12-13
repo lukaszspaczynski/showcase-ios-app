@@ -26,11 +26,14 @@ extension AppStepsDefinition {
         }
 
         case getBio = "GetBio"
+        case getAvatar = "GetAvatar"
 
         func handle(_ r: Resolver, _ result: Result) {
             switch self {
             case .getBio:
                 handleGetBio(r, result)
+            case .getAvatar:
+                handleGetAvatar(r, result)
             }
         }
     }

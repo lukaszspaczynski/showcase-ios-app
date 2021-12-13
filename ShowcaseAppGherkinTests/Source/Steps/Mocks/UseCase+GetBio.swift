@@ -12,9 +12,7 @@ import Swinject
 import SwinjectAutoregistration
 
 extension AppStepsDefinition.UseCase {
-    enum DummyError: Error {
-        case dummyError
-    }
+    private typealias Error = AppStepsDefinition.DummyError
 
     func handleGetBio(_ r: Resolver, _ result: Result) {
         let useCase: MockedGetBioUseCase = r.resolve(GetBioUseCase.self) as! MockedGetBioUseCase
@@ -29,7 +27,7 @@ extension AppStepsDefinition.UseCase {
         case .failure:
             useCase.executeInvokedResult = .callback
             useCase.executeInvokedResultCallback = { observer in
-                observer.onError(DummyError.dummyError)
+                observer.onError(Error.dummyError)
             }
         }
     }

@@ -10,19 +10,21 @@ import Foundation
 extension AccessibilityIdentifiers {
     enum Button {
         enum Welcome {
-            enum Page1 {
-                static let next = "WelcomePage1ButtonNext"
+            enum Skills {
+                static let prev = "WelcomeSkillsButtonPrev"
+                static let next = "WelcomeSkillsButtonNext"
             }
 
-            enum Page2 {
-                static let prev = "WelcomePage2ButtonPrev"
-                static let next = "WelcomePage2ButtonNext"
-                static let reload = "WelcomePage2ButtonReload"
+            enum Bio {
+                static let prev = "WelcomeBioButtonPrev"
+                static let next = "WelcomeBioButtonNext"
+                static let reload = "WelcomeBioButtonReload"
             }
 
-            enum Page3 {
-                static let prev = "WelcomePage3ButtonPrev"
-                static let start = "WelcomePage3ButtonStart"
+            enum Avatar {
+                static let prev = "WelcomeAvatarButtonPrev"
+                static let next = "WelcomeAvatarButtonNext"
+                static let reload = "WelcomeAvatarButtonReload"
             }
         }
     }

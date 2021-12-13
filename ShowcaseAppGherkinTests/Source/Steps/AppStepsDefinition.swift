@@ -15,6 +15,10 @@ import XCTest_Gherkin
 final class AppStepsDefinition: StepDefiner {
     typealias Step = AppSteps
 
+    enum DummyError: Error {
+        case dummyError
+    }
+
     enum AccessibilityType: String, MatchedStringRepresentable {
         init?(fromMatch: String) {
             self.init(rawValue: fromMatch)

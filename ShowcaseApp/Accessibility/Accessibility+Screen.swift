@@ -11,9 +11,9 @@ extension AccessibilityIdentifiers {
     enum Screen {
         enum Welcome {
             static let main = "WelcomeScreen"
-            static let page1 = "WelcomePage1Screen"
-            static let page2 = "WelcomePage2Screen"
-            static let page3 = "WelcomePage3Screen"
+            static let skills = "WelcomeSkillsScreen"
+            static let bio = "WelcomeBioScreen"
+            static let avatar = "WelcomeAvatarScreen"
         }
     }
 }
