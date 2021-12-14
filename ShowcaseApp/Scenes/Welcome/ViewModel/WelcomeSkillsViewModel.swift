@@ -27,7 +27,7 @@ struct WelcomeSkillsViewModelOutput {
     let nextDriver: Driver<Void>
 }
 
-class ConcreteWelcomeSkillsViewModel: WelcomeSkillsViewModel, ViewModel {
+final class ConcreteWelcomeSkillsViewModel: WelcomeSkillsViewModel, ViewModel {
     init() {}
 
     func transform(_ input: Input) -> Output {

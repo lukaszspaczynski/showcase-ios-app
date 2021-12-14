@@ -8,7 +8,7 @@
 import RxSwift
 import ShowcaseExtensions
 
-public class ConcreteRichTextTemplatesLocalDataSource: RichTextTemplatesLocalDataSource {
+public final class ConcreteRichTextTemplatesLocalDataSource: RichTextTemplatesLocalDataSource {
     public enum DataSourceError: Error {
         case resourceNotFound
         case underlyingError(Error)

@@ -14,7 +14,7 @@ import XCTest
 
 @testable import ShowcaseDomain
 
-class GetBioUseCaseTests: XCTestCase {
+final class GetBioUseCaseTests: XCTestCase {
     private enum DummyError: Error {
         case dummy
     }

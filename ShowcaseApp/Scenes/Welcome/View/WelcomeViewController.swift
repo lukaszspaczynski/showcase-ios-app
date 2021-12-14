@@ -16,7 +16,7 @@ final class WelcomeViewController: UIPageViewController {
 
     var provideViewControllers: (() -> [UIViewController])!
 
-    private lazy var orderedViewControllers: [UIViewController] = {
+    lazy var orderedViewControllers: [UIViewController] = {
         provideViewControllers()
     }()
 
@@ -36,45 +36,5 @@ final class WelcomeViewController: UIPageViewController {
 
         apply(style: style)
         applyAccessibility()
-    }
-}
-
-extension WelcomeViewController: UIPageViewControllerDataSource {
-    func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = orderedViewControllers
-            .firstIndex(of: viewController)
-        else {
-            return nil
-        }
-
-        let count = orderedViewControllers.count
-        let prevIndex = ((currentIndex + count) - 1) % count
-
-        guard prevIndex >= 0,
-              prevIndex < count
-        else {
-            return nil
-        }
-
-        return orderedViewControllers[prevIndex]
-    }
-
-    func pageViewController(_: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = orderedViewControllers
-            .firstIndex(of: viewController)
-        else {
-            return nil
-        }
-
-        let count = orderedViewControllers.count
-        let prevIndex = (currentIndex + 1) % count
-
-        guard prevIndex >= 0,
-              prevIndex < count
-        else {
-            return nil
-        }
-
-        return orderedViewControllers[prevIndex]
     }
 }

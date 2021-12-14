@@ -13,7 +13,7 @@ import XCTest
 
 @testable import ShowcaseData
 
-class ConcreteRichTextTemplatesRepositoryTests: XCTestCase {
+final class ConcreteRichTextTemplatesRepositoryTests: XCTestCase {
     private enum DummyError: Error {
         case dummy
     }

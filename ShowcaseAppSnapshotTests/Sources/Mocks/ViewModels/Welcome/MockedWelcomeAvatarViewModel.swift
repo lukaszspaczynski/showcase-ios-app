@@ -10,7 +10,7 @@ import UIKit
 
 @testable import ShowcaseApp
 
-class MockedWelcomeAvatarViewModel: WelcomeAvatarViewModel, MockedViewModel {
+final class MockedWelcomeAvatarViewModel: WelcomeAvatarViewModel, MockedViewModel {
     let outputCallback: OutputCallback
 
     init(outputCallback: @escaping OutputCallback) {

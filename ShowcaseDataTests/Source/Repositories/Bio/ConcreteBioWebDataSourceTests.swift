@@ -13,7 +13,7 @@ import XCTest
 
 @testable import ShowcaseData
 
-class ConcreteBioWebDataSourceTests: XCTestCase {
+final class ConcreteBioWebDataSourceTests: XCTestCase {
     private enum DummyError: Error {
         case dummy
     }

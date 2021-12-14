@@ -16,7 +16,7 @@ public enum HtmlDecoderError: Error {
     case xPathQueryFailed
 }
 
-public class ConcreteBioWebDataSource: BioWebDataSource {
+public final class ConcreteBioWebDataSource: BioWebDataSource {
     private let client: RestClient
     private let endpoint: BioWebEndpoint
 

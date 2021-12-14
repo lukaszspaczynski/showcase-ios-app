@@ -49,7 +49,7 @@ struct WelcomeBioViewModelOutput {
     let disposables: [Disposable]
 }
 
-class ConcreteWelcomeBioViewModel: WelcomeBioViewModel, ViewModel {
+final class ConcreteWelcomeBioViewModel: WelcomeBioViewModel, ViewModel {
     typealias ViewState = WelcomeBioViewModelOutput.ViewState
 
     let getBioUseCase: GetBioUseCase

@@ -15,7 +15,7 @@ import XCTest
 
 @testable import ShowcaseApp
 
-class WelcomeBioViewModelTests: XCTestCase {
+final class WelcomeBioViewModelTests: XCTestCase {
     private enum DummyError: Error {
         case dummy
     }

@@ -9,7 +9,7 @@ import UIKit
 
 extension Bundle {
     static var current: Bundle {
-        class __ {}
+        final class __ {}
         return Bundle(for: __.self)
     }
 }

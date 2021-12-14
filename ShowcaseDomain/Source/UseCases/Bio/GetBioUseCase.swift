@@ -36,7 +36,7 @@ public struct GetBioUseCaseOutput {
     }
 }
 
-public class ConcreteGetBioUseCase: GetBioUseCase, UseCase {
+public final class ConcreteGetBioUseCase: GetBioUseCase, UseCase {
     private let bioRepository: BioRepository
     private let templatesRepository: RichTextTemplatesRepository
 

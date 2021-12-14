@@ -9,6 +9,6 @@ import Foundation
 
 @testable import ShowcaseApp
 
-class MockedNavigator: Navigator {
+final class MockedNavigator: Navigator {
     func handle(navigation _: Navigation, animated _: Bool) {}
 }

@@ -7,7 +7,7 @@
 
 import RxSwift
 
-public class ConcreteRichTextTemplatesRepository: RichTextTemplatesRepository {
+public final class ConcreteRichTextTemplatesRepository: RichTextTemplatesRepository {
     private var localDataSource: RichTextTemplatesLocalDataSource
 
     public init(

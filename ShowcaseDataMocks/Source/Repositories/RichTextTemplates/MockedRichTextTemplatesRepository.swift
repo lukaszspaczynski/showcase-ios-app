@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import ShowcaseData
 
-public class MockedRichTextTemplatesRepository: RichTextTemplatesRepository {
+public final class MockedRichTextTemplatesRepository: RichTextTemplatesRepository {
     public init() {}
 
     public enum GetTemplateResult {

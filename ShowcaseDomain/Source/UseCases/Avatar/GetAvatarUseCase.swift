@@ -28,7 +28,7 @@ public struct GetAvatarUseCaseOutput {
     }
 }
 
-public class ConcreteGetAvatarUseCase: GetAvatarUseCase, UseCase {
+public final class ConcreteGetAvatarUseCase: GetAvatarUseCase, UseCase {
     let imageService: ImageService
     let imageFilterService: ImageFilterService
 

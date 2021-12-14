@@ -7,7 +7,7 @@
 
 import RxSwift
 
-public class ConcreteBioRepository: BioRepository {
+public final class ConcreteBioRepository: BioRepository {
     private var remoteDataSource: BioWebDataSource
 
     public init(

@@ -15,7 +15,7 @@ import XCTest
 
 @testable import ShowcaseApp
 
-class WelcomeBioViewControllerTests: XCTestCase {
+final class WelcomeBioViewControllerTests: XCTestCase {
     func testErrorView() throws {
         let (sut, _) = Self.prepareTestComponents(.error)
 

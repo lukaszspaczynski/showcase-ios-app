@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import ShowcaseDomain
 
-public class MockedGetAvatarUseCase: GetAvatarUseCase {
+public final class MockedGetAvatarUseCase: GetAvatarUseCase {
     public init() {}
 
     public enum ExecuteResult {

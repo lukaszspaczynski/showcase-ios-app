@@ -9,7 +9,7 @@ import Foundation
 
 @testable import ShowcaseApp
 
-class MockedWelcomeSkillsViewModel: WelcomeSkillsViewModel, MockedViewModel {
+final class MockedWelcomeSkillsViewModel: WelcomeSkillsViewModel, MockedViewModel {
     let outputCallback: OutputCallback
 
     init(outputCallback: @escaping OutputCallback) {

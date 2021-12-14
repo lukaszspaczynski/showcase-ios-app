@@ -58,13 +58,14 @@ targets:
         scheme:
             testTargets:
             - ShowcaseAppTests
-            - ShowcaseAppUITests
             - ShowcaseAppSnapshotTests
             - ShowcaseAppGherkinTests
         dependencies:
+            - target: ShowcaseExtensions
             - target: ShowcaseDomain
             - target: ShowcaseData
             - package: RxSwift
+              product: RxSwift
             - package: RxSwift
               product: RxCocoa
             - package: RxSwiftExt
@@ -81,55 +82,61 @@ targets:
             - path: ShowcaseAppTests
         dependencies:
             - target: ShowcaseApp
+            #from testing target
             - target: ShowcaseExtensions
-            - target: ShowcaseData
-            - target: ShowcaseDataMocks
             - target: ShowcaseDomain
+            - target: ShowcaseData
+            - package: RxSwift
+              product: RxSwift
+            - package: RxSwift
+              product: RxCocoa
+            - package: RxSwiftExt
+            - package: RxAppState
+            - package: Action
+            - package: Swinject
+            - package: SwinjectAutoregistration
+            - package: SwinjectStoryboard
+            #additional
+            - target: ShowcaseDataMocks
             - target: ShowcaseDomainMocks
             - package: Nimble
             - package: RxSwift
-            - package: RxSwift
               product: RxBlocking
             - package: RxSwift
-              product: RxCocoa
-            - package: RxSwift
               product: RxTest
-            - package: RxSwiftExt
-            - package: Action
-            
-    
-    ShowcaseAppUITests:
-        type: bundle.ui-testing
-        platform: iOS
-        sources:
-            - path: ShowcaseAppUITests
-        dependencies:
-            - target: ShowcaseApp
-            - target: ShowcaseExtensions
             
     ShowcaseAppSnapshotTests:
         type: bundle.unit-test
         platform: iOS
         sources:
             - path: ShowcaseAppSnapshotTests
+              excludes:
+                - "**/__Snapshots__/**"
         dependencies:
             - target: ShowcaseApp
-            - target: ShowcaseData
-            - target: ShowcaseDataMocks
-            - target: ShowcaseDomain
-            - target: ShowcaseDomainMocks
+            #from testing target
             - target: ShowcaseExtensions
-            - package: SnapshotTesting
-            - package: Nimble
+            - target: ShowcaseDomain
+            - target: ShowcaseData
             - package: RxSwift
+              product: RxSwift
+            - package: RxSwift
+              product: RxCocoa
+            - package: RxSwiftExt
+            - package: RxAppState
+            - package: Action
+            - package: Swinject
+            - package: SwinjectAutoregistration
+            - package: SwinjectStoryboard
+            #additional
+            - target: ShowcaseDataMocks
+            - target: ShowcaseDomainMocks
+            - package: Nimble
             - package: RxSwift
               product: RxBlocking
             - package: RxSwift
-              product: RxCocoa
-            - package: RxSwift
               product: RxTest
-            - package: RxSwiftExt
-            - package: Action
+            - package: SnapshotTesting
             
     ShowcaseAppGherkinTests:
         type: bundle.unit-test
@@ -138,25 +145,31 @@ targets:
             - path: ShowcaseAppGherkinTests
         dependencies:
             - target: ShowcaseApp
-            - target: ShowcaseData
-            - target: ShowcaseDataMocks
-            - target: ShowcaseDomain
-            - target: ShowcaseDomainMocks
+            #from testing target
             - target: ShowcaseExtensions
-            - package: SnapshotTesting
-            - package: Nimble
+            - target: ShowcaseDomain
+            - target: ShowcaseData
             - package: RxSwift
+              product: RxSwift
+            - package: RxSwift
+              product: RxCocoa
+            - package: RxSwiftExt
+            - package: RxAppState
+            - package: Action
+            - package: Swinject
+            - package: SwinjectAutoregistration
+            - package: SwinjectStoryboard
+            #additional
+            - target: ShowcaseDataMocks
+            - target: ShowcaseDomainMocks
+            - package: Nimble
             - package: RxSwift
               product: RxBlocking
             - package: RxSwift
-              product: RxCocoa
-            - package: RxSwift
               product: RxTest
-            - package: RxSwiftExt
-            - package: Action
             - package: XCTest_Gherkin
             - package: KIF
-    
+            
     #DOMAIN LAYER
     ShowcaseDomain:
         type: framework
@@ -167,11 +180,15 @@ targets:
             testTargets:
             - ShowcaseDomainTests
         dependencies:
+            - target: ShowcaseExtensions
             - target: ShowcaseData
             - package: RxSwift
+              product: RxSwift
+            - package: RxSwift
+              product: RxCocoa
             - package: RxSwiftExt
+            - package: RxAppState
             - package: Action
-            - target: ShowcaseExtensions
             
     ShowcaseDomainTests:
         type: bundle.unit-test
@@ -179,16 +196,25 @@ targets:
         sources:
             - path: ShowcaseDomainTests
         dependencies:
-            - package: Nimble
-            - package: RxSwift
-            - package: RxSwift
-              product: RxBlocking
-            - package: RxSwiftExt
-            - package: Action
-            - target: ShowcaseDomainMocks
+            - target: ShowcaseDomain
+            #from testing target
             - target: ShowcaseExtensions
             - target: ShowcaseData
+            - package: RxSwift
+              product: RxSwift
+            - package: RxSwift
+              product: RxCocoa
+            - package: RxSwiftExt
+            - package: RxAppState
+            - package: Action
+            #additional
+            - target: ShowcaseDomainMocks
             - target: ShowcaseDataMocks
+            - package: Nimble
+            - package: RxSwift
+              product: RxBlocking
+            - package: RxSwift
+              product: RxTest
             
     ShowcaseDomainMocks:
         type: framework
@@ -196,13 +222,15 @@ targets:
         sources: 
             - path: ShowcaseDomainMocks
         dependencies:
+            - target: ShowcaseExtensions
             - target: ShowcaseDomain
             - target: ShowcaseData
-            - target: ShowcaseExtensions
             - package: RxSwift
+              product: RxSwift
             - package: RxSwift
-              product: RxBlocking
+              product: RxCocoa
             - package: RxSwiftExt
+            - package: RxAppState
             - package: Action
             
     #DATA LAYER
@@ -215,9 +243,11 @@ targets:
             testTargets:
             - ShowcaseDataTests
         dependencies:
-            - package: RxSwift
-            - package: Kanna
             - target: ShowcaseExtensions
+            - package: RxSwift
+              product: RxSwift
+            - package: Kanna
+            - package: RxSwiftExt
         
     ShowcaseDataTests:
         type: bundle.unit-test
@@ -225,22 +255,21 @@ targets:
         sources:
             - path: ShowcaseDataTests
         dependencies:
+            - target: ShowcaseData
+            #from testing target
+            - target: ShowcaseExtensions
+            - package: RxSwift
+              product: RxSwift
+            - package: Kanna
+            - package: RxSwiftExt
+            #additional
             - package: Nimble
             - package: RxSwift
-            - package: RxSwift
               product: RxBlocking
-            - package: RxSwiftExt
-            - target: ShowcaseDataMocks
-            - target: ShowcaseExtensions
-         
-    ShowcaseExtensions:
-        type: framework
-        platform: iOS
-        sources: 
-            - path: ShowcaseExtensions
-        dependencies:
             - package: RxSwift
-            
+              product: RxTest
+            - target: ShowcaseDataMocks
+         
     ShowcaseDataMocks:
         type: framework
         platform: iOS
@@ -248,10 +277,47 @@ targets:
             - path: ShowcaseDataMocks
         dependencies:
             - target: ShowcaseData
+            - target: ShowcaseExtensions
             - package: RxSwift
+              product: RxSwift
+            - package: RxSwiftExt
+            - package: Kanna
+         
+    ShowcaseExtensions:
+        type: framework
+        platform: iOS
+        sources: 
+            - path: ShowcaseExtensions
+        scheme:
+            testTargets:
+            - ShowcaseExtensionsTests
+        dependencies:
+            - package: RxSwift
+              product: RxSwift
+            - package: RxSwift
+              product: RxCocoa
+            - package: RxSwiftExt
+            - package: RxAppState
+            - package: Action
+            
+    ShowcaseExtensionsTests:
+        type: bundle.unit-test
+        platform: iOS
+        sources:
+            - path: ShowcaseExtensionsTests
+        dependencies:
+            - target: ShowcaseExtensions
+            #from testing target
+            - package: RxSwift
+              product: RxSwift
+            - package: RxSwift
+              product: RxCocoa
+            - package: RxSwiftExt
+            - package: RxAppState
+            - package: Action
+            #additional
+            - package: Nimble
             - package: RxSwift
               product: RxBlocking
-            - package: RxSwiftExt
-            - target: ShowcaseExtensions
-            
-    
+            - package: RxSwift
+              product: RxTest

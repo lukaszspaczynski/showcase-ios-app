@@ -10,7 +10,7 @@ import XCTest_Gherkin
 
 @testable import ShowcaseApp
 
-class ShowcaseAppGherkinTests: GherkinTestCase {
+final class ShowcaseAppGherkinTests: GherkinTestCase {
     func testSwitchingPagesForward() throws {
         NativeRunner.runScenario(
             featureFile: "WelcomePage.feature",

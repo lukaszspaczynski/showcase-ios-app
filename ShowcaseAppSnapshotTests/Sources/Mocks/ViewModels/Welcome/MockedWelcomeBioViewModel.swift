@@ -9,7 +9,7 @@ import Foundation
 
 @testable import ShowcaseApp
 
-class MockedWelcomeBioViewModel: WelcomeBioViewModel, MockedViewModel {
+final class MockedWelcomeBioViewModel: WelcomeBioViewModel, MockedViewModel {
     let outputCallback: OutputCallback
 
     init(outputCallback: @escaping OutputCallback) {

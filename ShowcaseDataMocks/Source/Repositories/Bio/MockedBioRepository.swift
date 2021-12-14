@@ -9,7 +9,7 @@ import Kanna
 import RxSwift
 import ShowcaseData
 
-public class MockedBioRepository: BioRepository {
+public final class MockedBioRepository: BioRepository {
     public init() {}
 
     public enum GetBioResult {

@@ -10,7 +10,7 @@ import RxSwift
 import ShowcaseData
 import UIKit
 
-public class MockedImageService: ImageService {
+public final class MockedImageService: ImageService {
     public typealias GetRemoteImage = Observable<Result<UIImage, Error>>
 
     public init() {}

@@ -10,7 +10,7 @@ import RxSwift
 import ShowcaseData
 import UIKit
 
-public class MockedImageFilterService: ImageFilterService {
+public final class MockedImageFilterService: ImageFilterService {
     public typealias ApplyFilters = Observable<Result<UIImage, Error>>
 
     public init() {}

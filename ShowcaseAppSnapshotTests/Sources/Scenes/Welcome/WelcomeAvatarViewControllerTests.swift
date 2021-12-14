@@ -15,7 +15,7 @@ import XCTest
 
 @testable import ShowcaseApp
 
-class WelcomeAvatarViewControllerTests: XCTestCase {
+final class WelcomeAvatarViewControllerTests: XCTestCase {
     func testErrorView() throws {
         let (sut, _) = Self.prepareTestComponents(.error)
 

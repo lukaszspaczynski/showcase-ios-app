@@ -13,7 +13,7 @@ import XCTest
 
 @testable import ShowcaseData
 
-class ConcreteRichTextTemplatesLocalDataSourceTests: XCTestCase {
+final class ConcreteRichTextTemplatesLocalDataSourceTests: XCTestCase {
     func testGettingAllTemplates() {
         // GIVEN
         let sut = ConcreteRichTextTemplatesLocalDataSource()

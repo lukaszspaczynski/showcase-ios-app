@@ -108,14 +108,11 @@ final class WelcomeAvatarViewController: UIViewController {
     }
 
     private func bind(_ avatar: WelcomeAvatarViewModelOutput.Avatar) {
-//        let radius = imageViewPixelizedAvatar.frame.width / 2.0
-
         imageViewPixelizedAvatar.image = avatar.original
         imageViewPixelizedAvatar.animationImages = avatar.pixelized
         imageViewPixelizedAvatar.animationDuration = 4
         imageViewPixelizedAvatar.animationRepeatCount = 1
         imageViewPixelizedAvatar.startAnimating()
-//        imageViewPixelizedAvatar.layer.cornerRadius = radius
     }
 
     private func show(view type: WelcomeAvatarViewModelOutput.ViewState) {

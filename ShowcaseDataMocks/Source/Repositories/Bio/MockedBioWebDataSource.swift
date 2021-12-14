@@ -9,7 +9,7 @@ import Kanna
 import RxSwift
 import ShowcaseData
 
-public class MockedBioWebDataSource: BioWebDataSource {
+public final class MockedBioWebDataSource: BioWebDataSource {
     public init() {}
 
     public enum GetTemplateResult {

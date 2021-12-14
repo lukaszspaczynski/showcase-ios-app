@@ -49,7 +49,7 @@ struct WelcomeAvatarViewModelOutput {
     let disposables: [Disposable]
 }
 
-class ConcreteWelcomeAvatarViewModel: WelcomeAvatarViewModel, ViewModel {
+final class ConcreteWelcomeAvatarViewModel: WelcomeAvatarViewModel, ViewModel {
     typealias ViewState = WelcomeAvatarViewModelOutput.ViewState
 
     let getAvatarUseCase: GetAvatarUseCase

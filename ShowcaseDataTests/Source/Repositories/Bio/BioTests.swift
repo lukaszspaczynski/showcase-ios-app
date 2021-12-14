@@ -12,7 +12,7 @@ import XCTest
 
 @testable import ShowcaseData
 
-class BioTests: XCTestCase {
+final class BioTests: XCTestCase {
     func testInstantiateWithHtml() {
         let (sut, _) = Self.prepareTestComponents()
 

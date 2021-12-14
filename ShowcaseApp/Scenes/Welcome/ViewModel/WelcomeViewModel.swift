@@ -15,7 +15,7 @@ protocol WelcomeViewModel {
     func transform(_ input: Input) -> Output
 }
 
-class ConcreteWelcomeViewModel: WelcomeViewModel, ViewModel {
+final class ConcreteWelcomeViewModel: WelcomeViewModel, ViewModel {
     init() {}
 
     func transform(_: Input) -> Output {}

@@ -15,7 +15,7 @@ import XCTest
 
 @testable import ShowcaseApp
 
-class WelcomeSkillsViewControllerTests: XCTestCase {
+final class WelcomeSkillsViewControllerTests: XCTestCase {
     func testView() throws {
         let (sut, _) = Self.prepareTestComponents()
 

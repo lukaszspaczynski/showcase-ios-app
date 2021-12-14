@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import ShowcaseDomain
 
-public class MockedGetBioUseCase: GetBioUseCase {
+public final class MockedGetBioUseCase: GetBioUseCase {
     public init() {}
 
     public enum ExecuteResult {

@@ -7,7 +7,7 @@
 
 import ShowcaseData
 
-public class MockedRestClient: RestClient {
+public final class MockedRestClient: RestClient {
     public init() {}
 
     public var dispatchInvoked: Bool = false

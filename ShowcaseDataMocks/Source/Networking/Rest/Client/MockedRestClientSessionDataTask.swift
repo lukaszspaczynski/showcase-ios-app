@@ -7,7 +7,7 @@
 
 import ShowcaseData
 
-public class MockedRestClientSessionDataTask: RestClientSessionDataTask {
+public final class MockedRestClientSessionDataTask: RestClientSessionDataTask {
     public var resumeInvoked: Bool = false
     public var onResumeAction: (() -> Void)?
     public func resume() {

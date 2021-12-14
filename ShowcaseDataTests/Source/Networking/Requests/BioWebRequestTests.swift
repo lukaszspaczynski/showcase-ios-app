@@ -11,7 +11,7 @@ import XCTest
 
 @testable import ShowcaseData
 
-class BioWebRequestTests: XCTestCase {
+final class BioWebRequestTests: XCTestCase {
     func testInstantiateRequest() {
         let (sut, endpoint) = Self.prepareTestComponents()
 
