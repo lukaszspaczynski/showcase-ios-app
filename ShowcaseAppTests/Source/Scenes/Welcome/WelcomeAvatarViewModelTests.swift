@@ -1,8 +1,8 @@
 //
-//  WelcomeBioViewModelTests.swift
+//  WelcomeAvatarViewModelTests.swift
 //  ShowcaseAppTests
 //
-//  Created by Lukasz Spaczynski on 26/11/2021.
+//  Created by Lukasz Spaczynski on 14/12/2021.
 //
 
 import Nimble
@@ -15,31 +15,11 @@ import XCTest
 
 @testable import ShowcaseApp
 
-final class WelcomeBioViewModelTests: XCTestCase {
+final class WelcomeAvatarViewModelTests: XCTestCase {
     private enum DummyError: Error {
         case dummy
     }
-
-    func testLinkDriver() throws {
-        // GIVEN
-
-        var (sut, _, testable, _) = Self.prepareTestComponents()
-
-        // WHEN
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            testable.openLinkSubject.onNext(URL(string: "http://dummy.net")!)
-        }
-
-        let output = try sut
-            .transform(testable.input)
-            .linkDriver
-            .toBlocking(timeout: 1)
-            .first()
-
-        // THEN
-        expect(output).toNot(beNil())
-    }
-
+    
     func testNextDriver() throws {
         // GIVEN
 
@@ -59,7 +39,7 @@ final class WelcomeBioViewModelTests: XCTestCase {
         // THEN
         expect(output).toNot(beNil())
     }
-
+    
     func testPrevDriver() throws {
         // GIVEN
 
@@ -79,13 +59,13 @@ final class WelcomeBioViewModelTests: XCTestCase {
         // THEN
         expect(output).toNot(beNil())
     }
-
+    
     func testShowViewDriverOnSuccessResult() throws {
         // GIVEN
-        var (sut, getBioUseCase, testable, scheduler) = Self.prepareTestComponents()
+        var (sut, getAvatarUseCase, testable, scheduler) = Self.prepareTestComponents()
         let disposeBag = DisposeBag()
 
-        getBioUseCase.executeInvokedResult = .valid
+        getAvatarUseCase.executeInvokedResult = .valid
 
         let output = sut.transform(testable.input)
 
@@ -102,8 +82,8 @@ final class WelcomeBioViewModelTests: XCTestCase {
             .disposed(by: disposeBag)
 
         output
-            .bioDriver
-            .drive(testable.bioObserver)
+            .avatarDriver
+            .drive(testable.avatarObserver)
             .disposed(by: disposeBag)
 
         scheduler
@@ -126,8 +106,8 @@ final class WelcomeBioViewModelTests: XCTestCase {
             .compactMap(\.value.element)
             .reversed()
 
-        let bioEvents: [Bio] = testable
-            .bioObserver
+        let avatarEvents: [Avatar] = testable
+            .avatarObserver
             .events
             .compactMap(\.value.element)
 
@@ -136,18 +116,18 @@ final class WelcomeBioViewModelTests: XCTestCase {
         expect(workingEvents[0]).to(beFalse())
         expect(workingEvents[1]).to(beTrue())
         expect(workingEvents[2]).to(beFalse())
-        expect(bioEvents.last).toNot(beNil())
+        expect(avatarEvents.last).toNot(beNil())
         expect(viewStateEvents.count).to(beGreaterThanOrEqualTo(2))
-        expect(viewStateEvents[0]).to(equal(.bio))
+        expect(viewStateEvents[0]).to(equal(.avatar))
         expect(viewStateEvents[1]).to(equal(.working))
     }
-
+    
     func testShowViewDriverOnFailureResult() throws {
         // GIVEN
-        var (sut, getBioUseCase, testable, scheduler) = Self.prepareTestComponents()
+        var (sut, getAvatarUseCase, testable, scheduler) = Self.prepareTestComponents()
         let disposeBag = DisposeBag()
 
-        getBioUseCase.executeInvokedResult = .failure(DummyError.dummy)
+        getAvatarUseCase.executeInvokedResult = .failure(DummyError.dummy)
 
         let output = sut.transform(testable.input)
 
@@ -164,8 +144,8 @@ final class WelcomeBioViewModelTests: XCTestCase {
             .disposed(by: disposeBag)
 
         output
-            .bioDriver
-            .drive(testable.bioObserver)
+            .avatarDriver
+            .drive(testable.avatarObserver)
             .disposed(by: disposeBag)
 
         scheduler
@@ -188,8 +168,8 @@ final class WelcomeBioViewModelTests: XCTestCase {
             .compactMap(\.value.element)
             .reversed()
 
-        let bioEvents: [Bio] = testable
-            .bioObserver
+        let avatarEvents: [Avatar] = testable
+            .avatarObserver
             .events
             .compactMap(\.value.element)
 
@@ -198,18 +178,22 @@ final class WelcomeBioViewModelTests: XCTestCase {
         expect(workingEvents[0]).to(beFalse())
         expect(workingEvents[1]).to(beTrue())
         expect(workingEvents[2]).to(beFalse())
-        expect(bioEvents.last).to(beNil())
+        expect(avatarEvents.last).to(beNil())
         expect(viewStateEvents.count).to(beGreaterThanOrEqualTo(2))
         expect(viewStateEvents[0]).to(equal(.error))
         expect(viewStateEvents[1]).to(equal(.working))
     }
 }
 
-extension WelcomeBioViewModelTests {
-    typealias ViewState = WelcomeBioViewModelOutput.ViewState
-    typealias Bio = WelcomeBioViewModelOutput.Bio
+extension WelcomeAvatarViewModelTests {
+    typealias ViewState = WelcomeAvatarViewModelOutput.ViewState
+    typealias Avatar = WelcomeAvatarViewModelOutput.Avatar
 
-    struct WelcomeBioViewModelTestable {
+    struct MockedAvatarEndpoint: AvatarEndpoint {
+        var avatarEndpoint = URL(string: "http://dummy.net")!
+    }
+    
+    struct WelcomeAvatarViewModelTestable {
         let loadSubject = PublishSubject<Void>()
         let prevSubject = PublishSubject<Void>()
         let nextSubject = PublishSubject<Void>()
@@ -217,41 +201,41 @@ extension WelcomeBioViewModelTests {
 
         let workingObserver: TestableObserver<Bool>
         let viewStateObserver: TestableObserver<ViewState>
-        let bioObserver: TestableObserver<Bio>
+        let avatarObserver: TestableObserver<Avatar>
 
-        private(set) lazy var input: WelcomeBioViewModelInput = {
+        private(set) lazy var input: WelcomeAvatarViewModelInput = {
             typealias C<T> = ControlEvent<T>
 
-            return WelcomeBioViewModelInput(
+            return WelcomeAvatarViewModelInput(
                 loadEvent: C(events: loadSubject),
                 prevEvent: C(events: prevSubject),
-                nextEvent: C(events: nextSubject),
-                openLinkEvent: C(events: openLinkSubject)
-            )
+                nextEvent: C(events: nextSubject))
         }()
 
         init(_ scheduler: TestScheduler) {
             workingObserver = scheduler.createObserver(Bool.self)
             viewStateObserver = scheduler.createObserver(ViewState.self)
-            bioObserver = scheduler.createObserver(Bio.self)
+            avatarObserver = scheduler.createObserver(Avatar.self)
         }
     }
 
     typealias TestComponents = (
-        sut: WelcomeBioViewModel,
-        getBioUseCase: MockedGetBioUseCase,
-        testable: WelcomeBioViewModelTestable,
+        sut: WelcomeAvatarViewModel,
+        getAvatarUseCase: MockedGetAvatarUseCase,
+        testable: WelcomeAvatarViewModelTestable,
         scheduler: TestScheduler
     )
 
     static func prepareTestComponents() -> TestComponents {
         let scheduler = TestScheduler(initialClock: 0)
-        let getBioUseCase = MockedGetBioUseCase()
-        let testable = WelcomeBioViewModelTestable(scheduler)
+        let getAvatarUseCase = MockedGetAvatarUseCase()
+        let testable = WelcomeAvatarViewModelTestable(scheduler)
+        let mockedEndpoint = MockedAvatarEndpoint()
+        
+        let sut = ConcreteWelcomeAvatarViewModel(
+            getAvatarUseCase: getAvatarUseCase,
+            avatarEndpoint: mockedEndpoint)
 
-        let sut = ConcreteWelcomeBioViewModel(
-            getBioUseCase: getBioUseCase)
-
-        return (sut, getBioUseCase, testable, scheduler)
+        return (sut, getAvatarUseCase, testable, scheduler)
     }
 }
