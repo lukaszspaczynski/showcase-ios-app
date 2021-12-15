@@ -67,7 +67,7 @@ Carthage/Checkouts
 Carthage/Build/
 
 # Accio dependency management
-Dependencies/
+# Dependencies/
 .accio/
 
 # fastlane
