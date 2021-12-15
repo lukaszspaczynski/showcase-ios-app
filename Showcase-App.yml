@@ -254,6 +254,8 @@ targets:
         platform: iOS
         sources:
             - path: ShowcaseDataTests
+              excludes:
+                - "**/__Snapshots__/**"
         dependencies:
             - target: ShowcaseData
             #from testing target
@@ -269,6 +271,7 @@ targets:
             - package: RxSwift
               product: RxTest
             - target: ShowcaseDataMocks
+            - package: SnapshotTesting
          
     ShowcaseDataMocks:
         type: framework

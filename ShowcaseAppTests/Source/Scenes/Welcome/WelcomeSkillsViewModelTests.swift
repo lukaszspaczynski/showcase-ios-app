@@ -19,7 +19,7 @@ final class WelcomeSkillsViewModelTests: XCTestCase {
     private enum DummyError: Error {
         case dummy
     }
-    
+
     func testNextDriver() throws {
         // GIVEN
 
@@ -39,7 +39,7 @@ final class WelcomeSkillsViewModelTests: XCTestCase {
         // THEN
         expect(output).toNot(beNil())
     }
-    
+
     func testPrevDriver() throws {
         // GIVEN
 
@@ -62,17 +62,17 @@ final class WelcomeSkillsViewModelTests: XCTestCase {
 }
 
 extension WelcomeSkillsViewModelTests {
-    
     struct WelcomeSkillsViewModelTestable {
         let prevSubject = PublishSubject<Void>()
         let nextSubject = PublishSubject<Void>()
-        
+
         lazy var input: WelcomeSkillsViewModelInput = {
             typealias C<T> = ControlEvent<T>
 
             return WelcomeSkillsViewModelInput(
                 prevEvent: C(events: prevSubject),
-                nextEvent: C(events: nextSubject))
+                nextEvent: C(events: nextSubject)
+            )
         }()
     }
 
@@ -83,7 +83,7 @@ extension WelcomeSkillsViewModelTests {
 
     static func prepareTestComponents() -> TestComponents {
         let testable = WelcomeSkillsViewModelTestable()
-        
+
         let sut = ConcreteWelcomeSkillsViewModel()
 
         return (sut, testable)

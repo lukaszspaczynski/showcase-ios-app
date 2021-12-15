@@ -19,7 +19,7 @@ final class WelcomeAvatarViewModelTests: XCTestCase {
     private enum DummyError: Error {
         case dummy
     }
-    
+
     func testNextDriver() throws {
         // GIVEN
 
@@ -39,7 +39,7 @@ final class WelcomeAvatarViewModelTests: XCTestCase {
         // THEN
         expect(output).toNot(beNil())
     }
-    
+
     func testPrevDriver() throws {
         // GIVEN
 
@@ -59,7 +59,7 @@ final class WelcomeAvatarViewModelTests: XCTestCase {
         // THEN
         expect(output).toNot(beNil())
     }
-    
+
     func testShowViewDriverOnSuccessResult() throws {
         // GIVEN
         var (sut, getAvatarUseCase, testable, scheduler) = Self.prepareTestComponents()
@@ -121,7 +121,7 @@ final class WelcomeAvatarViewModelTests: XCTestCase {
         expect(viewStateEvents[0]).to(equal(.avatar))
         expect(viewStateEvents[1]).to(equal(.working))
     }
-    
+
     func testShowViewDriverOnFailureResult() throws {
         // GIVEN
         var (sut, getAvatarUseCase, testable, scheduler) = Self.prepareTestComponents()
@@ -192,7 +192,7 @@ extension WelcomeAvatarViewModelTests {
     struct MockedAvatarEndpoint: AvatarEndpoint {
         var avatarEndpoint = URL(string: "http://dummy.net")!
     }
-    
+
     struct WelcomeAvatarViewModelTestable {
         let loadSubject = PublishSubject<Void>()
         let prevSubject = PublishSubject<Void>()
@@ -209,7 +209,8 @@ extension WelcomeAvatarViewModelTests {
             return WelcomeAvatarViewModelInput(
                 loadEvent: C(events: loadSubject),
                 prevEvent: C(events: prevSubject),
-                nextEvent: C(events: nextSubject))
+                nextEvent: C(events: nextSubject)
+            )
         }()
 
         init(_ scheduler: TestScheduler) {
@@ -231,10 +232,11 @@ extension WelcomeAvatarViewModelTests {
         let getAvatarUseCase = MockedGetAvatarUseCase()
         let testable = WelcomeAvatarViewModelTestable(scheduler)
         let mockedEndpoint = MockedAvatarEndpoint()
-        
+
         let sut = ConcreteWelcomeAvatarViewModel(
             getAvatarUseCase: getAvatarUseCase,
-            avatarEndpoint: mockedEndpoint)
+            avatarEndpoint: mockedEndpoint
+        )
 
         return (sut, getAvatarUseCase, testable, scheduler)
     }
