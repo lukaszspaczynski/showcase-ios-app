@@ -72,9 +72,7 @@ targets:
         dependencies:
             - package: ShowcaseExtensions
             - package: ShowcaseDomain
-              product: ShowcaseDomain
             - package: ShowcaseData
-              product: ShowcaseData
             - package: RxSwift
               product: RxSwift
             - package: RxSwift
@@ -93,22 +91,6 @@ targets:
             - path: ShowcaseAppTests
         dependencies:
             - target: ShowcaseApp
-            #from testing target
-            #- package: ShowcaseExtensions
-#            - target: ShowcaseDomain
-#            - package: ShowcaseData
-#              product: ShowcaseData
-#            - package: RxSwift
-#              product: RxSwift
-#            - package: RxSwift
-#              product: RxCocoa
-#            - package: RxSwiftExt
-#            - package: RxAppState
-#            - package: Action
-#            - package: Swinject
-#            - package: SwinjectAutoregistration
-#            - package: SwinjectStoryboard
-            #additional
             - package: ShowcaseData
               product: ShowcaseDataMocks
             - package: ShowcaseDomain
@@ -128,22 +110,6 @@ targets:
                 - "**/__Snapshots__/**"
         dependencies:
             - target: ShowcaseApp
-            #from testing target
-            #- package: ShowcaseExtensions
-#            - target: ShowcaseDomain
-#            - package: ShowcaseData
-#              product: ShowcaseData
-#            - package: RxSwift
-#              product: RxSwift
-#            - package: RxSwift
-#              product: RxCocoa
-#            - package: RxSwiftExt
-#            - package: RxAppState
-#            - package: Action
-#            - package: Swinject
-#            - package: SwinjectAutoregistration
-#            - package: SwinjectStoryboard
-            #additional
             - package: ShowcaseData
               product: ShowcaseDataMocks
             - package: ShowcaseDomain
@@ -162,22 +128,6 @@ targets:
             - path: ShowcaseAppGherkinTests
         dependencies:
             - target: ShowcaseApp
-            #from testing target
-           # - package: ShowcaseExtensions
-#            - target: ShowcaseDomain
-#            - package: ShowcaseData
-#              product: ShowcaseData
-#            - package: RxSwift
-#              product: RxSwift
-#            - package: RxSwift
-#              product: RxCocoa
-#            - package: RxSwiftExt
-#            - package: RxAppState
-#            - package: Action
-#            - package: Swinject
-#            - package: SwinjectAutoregistration
-#            - package: SwinjectStoryboard
-            #additional
             - package: ShowcaseData
               product: ShowcaseDataMocks
             - package: ShowcaseDomain
