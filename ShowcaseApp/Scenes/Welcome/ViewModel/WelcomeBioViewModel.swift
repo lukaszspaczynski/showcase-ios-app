@@ -13,6 +13,7 @@ import ShowcaseData
 import ShowcaseDomain
 import Swinject
 import SwinjectAutoregistration
+import Foundation
 
 protocol WelcomeBioViewModel {
     typealias Input = WelcomeBioViewModelInput

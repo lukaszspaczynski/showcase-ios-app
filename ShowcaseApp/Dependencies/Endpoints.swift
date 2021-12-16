@@ -6,6 +6,7 @@
 //
 
 import ShowcaseData
+import Foundation
 
 struct Endpoints:
     BioWebEndpoint,
