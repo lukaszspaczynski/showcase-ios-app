@@ -10,6 +10,7 @@ import RxBlocking
 import RxCocoa
 import RxSwift
 import RxTest
+import ShowcaseDomain
 import ShowcaseDomainMocks
 import XCTest
 

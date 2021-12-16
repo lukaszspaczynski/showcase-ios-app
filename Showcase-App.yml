@@ -48,10 +48,10 @@ packages:
         from: 1.0.2
     ShowcaseData:
         url: https://github.com/lukaszspaczynski/showcase-ios-data.git
-        from: 1.0.1
+        exactVersion: 1.0.1
     ShowcaseDomain:
         url: https://github.com/lukaszspaczynski/showcase-ios-domain.git
-        from: 1.0.0
+        exactVersion: 1.0.0
 
 targets:
 
@@ -91,6 +91,7 @@ targets:
             - path: ShowcaseAppTests
         dependencies:
             - target: ShowcaseApp
+            
             - package: ShowcaseData
               product: ShowcaseDataMocks
             - package: ShowcaseDomain
@@ -100,6 +101,8 @@ targets:
               product: RxBlocking
             - package: RxSwift
               product: RxTest
+              
+            - package: Action
             
     ShowcaseAppSnapshotTests:
         type: bundle.unit-test
@@ -110,6 +113,7 @@ targets:
                 - "**/__Snapshots__/**"
         dependencies:
             - target: ShowcaseApp
+            
             - package: ShowcaseData
               product: ShowcaseDataMocks
             - package: ShowcaseDomain
@@ -121,6 +125,8 @@ targets:
               product: RxTest
             - package: SnapshotTesting
             
+            - package: Action
+            
     ShowcaseAppGherkinTests:
         type: bundle.unit-test
         platform: iOS
@@ -128,6 +134,7 @@ targets:
             - path: ShowcaseAppGherkinTests
         dependencies:
             - target: ShowcaseApp
+            
             - package: ShowcaseData
               product: ShowcaseDataMocks
             - package: ShowcaseDomain
@@ -139,3 +146,5 @@ targets:
               product: RxTest
             - package: XCTest_Gherkin
             - package: KIF
+            
+            - package: Action
