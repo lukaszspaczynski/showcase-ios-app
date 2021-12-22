@@ -6,6 +6,7 @@
 //
 
 import Action
+import Foundation
 import RxCocoa
 import RxSwift
 import RxSwiftExt
@@ -13,7 +14,6 @@ import ShowcaseData
 import ShowcaseDomain
 import Swinject
 import SwinjectAutoregistration
-import Foundation
 
 protocol WelcomeBioViewModel {
     typealias Input = WelcomeBioViewModelInput

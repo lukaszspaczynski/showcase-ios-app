@@ -5,8 +5,8 @@
 //  Created by Lukasz Spaczynski on 20/11/2021.
 //
 
-import ShowcaseData
 import Foundation
+import ShowcaseData
 
 struct Endpoints:
     BioWebEndpoint,
